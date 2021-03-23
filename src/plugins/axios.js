@@ -9,7 +9,7 @@ if(process.env.NODE_ENV === 'development'){
   axios.defaults.baseURL = 'http://localhost:8000/api/';
 }
 if(process.env.NODE_ENV === 'production'){
-  axios.defaults.baseURL = 'https://api-send-mail.000webhostapp.com/public/api/emails'
+  axios.defaults.baseURL = 'https://api-send-mail.000webhostapp.com/public/api/'
 }
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
