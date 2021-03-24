@@ -108,7 +108,7 @@
           prepend-icon="mdi-magnify"
           label="Pesquisar"
         ></v-text-field>
-        <v-data-table :search="search" :headers="headers" :items="emails">
+        <v-data-table :loading="loadingEmailsEnviados" :search="search" :headers="headers" :items="emails">
           <template v-slot:[`item.data_envio`]="{ item }">
             {{ item.data_envio }}
           </template>
@@ -194,6 +194,7 @@ export default {
     mensagemSucesso: null,
     erros: [],
     errosShow: false,
+    loadingEmailsEnviados: false
   }),
   methods: {
     enviarEmail() {
@@ -256,8 +257,11 @@ export default {
         });
     },
     listarEmails() {
+      this.loadingEmailsEnviados = true
       this.axios.get("emails").then((response) => {
         this.emails = response.data;
+      }).finally(() => {
+        this.loadingEmailsEnviados = false
       });
     },
   },
